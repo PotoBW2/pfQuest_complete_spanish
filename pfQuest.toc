@@ -1,0 +1,13 @@
+## Interface: 11200
+## Title: |cff33ffccpf|cffffffffQuest
+## Author: Shagu
+## Notes: Un addon que ayuda a completar misiones y que tiene una Base de Datos incorporada.
+## Notes-ruRU: Облегченный помощник заданий и база данных
+## Version: 6.9.3
+## OptionalDeps: pfUI
+## SavedVariables: pfQuest_questcache
+## SavedVariablesPerCharacter: pfQuest_config, pfBrowser_fav, pfQuest_history, pfQuest_colors, pfQuest_server
+init\data.xml
+init\enUS.xml
+init\esES.xml
+init\addon.xml
