@@ -99,7 +99,7 @@ pfQuest_defconfig = {
     default = "1", type = "checkbox", config = "showcluster" },
   { text = L["Iconos de objetivos de la misión (minimapa)"],
     default = "0", type = "checkbox", config = "showclustermini" },
-  { text = L["Mostrar los otorgantes de misiones disponibles"],
+  { text = L["Display Available Quest Givers"],
     default = "1", type = "checkbox", config = "allquestgivers" },
   { text = L["Mostrar los otorgantes de misiones actuales"],
     default = "1", type = "checkbox", config = "currentquestgivers" },
