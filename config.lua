@@ -120,7 +120,7 @@ pfQuest_defconfig = {
     default = "1", type = "checkbox", config = "cutoutminimap" },
   { text = L["Usar  los iconos de nodos del mapa del mundo recortados"],
     default = "0", type = "checkbox", config = "cutoutworldmap" },
-  { text = L["Nodos del mapa de colores por Objetivo"],
+  { text = L["Color Map Nodes By Spawn"],
     default = "0", type = "checkbox", config = "spawncolors" },
   { text = L["Transparencia de nodos en el mapa del mundo"],
     default = "1.0", type = "text", config = "worldmaptransp" },
@@ -259,7 +259,7 @@ pfQuestConfig.save:SetScript("OnClick", ReloadUI)
 pfQuestConfig.save.text = pfQuestConfig.save:CreateFontString("Caption", "LOW", "GameFontWhite")
 pfQuestConfig.save.text:SetAllPoints(pfQuestConfig.save)
 pfQuestConfig.save.text:SetFont(pfUI.font_default, pfUI_config.global.font_size, "OUTLINE")
-pfQuestConfig.save.text:SetText(L["Cerrar y recargar"])
+pfQuestConfig.save.text:SetText(L["Close & Reload"])
 pfUI.api.SkinButton(pfQuestConfig.save)
 
 function pfQuestConfig:LoadConfig()
