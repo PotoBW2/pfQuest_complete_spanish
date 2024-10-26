@@ -1,17 +1,20 @@
-# pfQuest
+# pfQuest_spanish
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/mode.png" float="right" align="right" width="25%">
 
-This is an addon for World of Warcraft Vanilla (1.12) and The Burning Crusade (2.4.3). It helps players to find several ingame objects and quests. The addon reads questobjectives, parses them and uses its internal database to plot the found matches on the world- and minimap. It ships with a GUI to browse through all known objects. If one of the items is not yet available on your realm, you'll see a [?] in front of the name.
+Este es un complemento para World of Warcraft Vanilla (1.12) y The Burning Crusade (2.4.3). Ayuda a los jugadores a encontrar varios objetos y misiones dentro del juego. El complemento lee los objetivos de las misiones, los analiza y utiliza su base de datos interna para trazar las coincidencias encontradas en el mundo y el minimapa. Viene con una interfaz gráfica de usuario para explorar todos los objetos conocidos. Si uno de los elementos aún no está disponible en tu reino, verás un [?] delante del nombre.
 
-The addon is not designed to be a quest- or tourguide, instead the goals are to provide an accurate in-game version of [AoWoW](http://db.vanillagaming.org/) or [Wowhead](http://www.wowhead.com/). The vanilla version is powered by the database of [VMaNGOS](https://github.com/vmangos). The Burning Crusade version is using data from the [CMaNGOS](https://github.com/cmangos) project with translations taken from [MaNGOS Extras](https://github.com/MangosExtras).
+El complemento no está diseñado para ser una guía de misiones o de recorridos turísticos, sino que los objetivos son proporcionar una versión precisa del juego de [AoWoW](https://classicdb.ch/) o [Wowhead](http://www.wowhead.com/). La versión original funciona con la base de datos de [VMaNGOS](https://github.com/vmangos). La versión de Burning Crusade utiliza datos del proyecto [CMaNGOS](https://github.com/cmangos) con traducciones tomadas de [MaNGOS Extras](https://github.com/MangosExtras).
 
 pfQuest is the successor of [ShaguQuest](https://shagu.org/ShaguQuest/) and has been entirely written from scratch. In comparison to [ShaguQuest](https://shagu.org/ShaguQuest/), this addon does not depend on any specific map- or questlog addon. It's designed to support the default interface aswell as every other addon. In case you experience any addon conflicts, please add an issue to the bugtracker.
 
-# Downloads
-You can check the [[Latest Changes]](https://github.com/shagu/pfQuest/commits/master) page to see what has changed recently.
+pfQuest es el sucesor de [ShaguQuest](https://shagu.org/ShaguQuest/) y ha sido escrito completamente desde cero. En comparación con [ShaguQuest](https://shagu.org/ShaguQuest/), este complemento no depende de ningún mapa específico ni de ningún complemento de registro de misiones. Está diseñado para admitir la interfaz predeterminada y todos los demás complementos. En caso de que experimentes algún conflicto con los complementos, agrega un problema al rastreador de errores de la pagina [original de Shagu](https://github.com/shagu/pfQuest).
+
+# Descargas
+
+Puedes consultar la página [[Últimos cambios]](https://github.com/PotoBW2/pfQuest_complete_spanish/commits/master) para ver qué ha cambiado recientemente. O consultar los ultimos [cambios de Shagu](https://github.com/shagu/pfQuest/commits/master)
 
 ## World of Warcraft: **Vanilla**
-1. **[[Download pfQuest]](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-full.zip)** (\*)
+1. **[[Download pfQuest]](https://github.com/PotoBW2/pfQuest_complete_spanish/releases/download/pfQuest_Complete_Spanish/pfQuest.rar)** (\*)
 2. Unpack the Zip-file
 3. Move the `pfQuest` folder into `Wow-Directory\Interface\AddOns`
 4. Restart Wow
