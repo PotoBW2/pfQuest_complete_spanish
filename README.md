@@ -26,7 +26,7 @@ PayPal: joseamosher@gmail.com
 
 # Descargas
 
-Puedes consultar la página [[Últimos cambios]](https://github.com/PotoBW2/pfQuest_complete_spanish/commits/master) para ver qué ha cambiado recientemente. O consultar los ultimos [cambios de Shagu](https://github.com/shagu/pfQuest/commits/master)
+Puedes consultar la página [[Últimos cambios]](https://github.com/PotoBW2/pfQuest_complete_spanish/commits/master) para ver qué ha cambiado recientemente. O consultar los últimos [cambios de Shagu](https://github.com/shagu/pfQuest/commits/master).
 
 ## World of Warcraft: **Vanilla**
 1. **[[Download pfQuest]](https://github.com/PotoBW2/pfQuest_complete_spanish/releases/download/pfQuest_Complete_Spanish_1.01/pfQuest.rar)** (\*)
