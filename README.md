@@ -14,8 +14,15 @@ pfQuest es el sucesor de [ShaguQuest](https://shagu.org/ShaguQuest/) y ha sido e
 Shagu brindó todas las herramientas para hacer las traducciones. Así que el mérito es para ese pedazo de hombre (quien sabe, quizas sea una mujer). Las traducciones están hechas en Google Translate así que pueden estar mal traducidas o intelegibles. En caso de que tenga alguna inconformidad al respecto puede contactarme para arreglar estas malas traducciones.
 
 Telefono, WhatSapp, Telegram: +53 55920042
+
 Telegram: @potobw
+
 Correo: dmosquerabw@gmail.com
+
+
+# Donaciones
+
+PayPal: joseamosher@gmail.com
 
 # Descargas
 
