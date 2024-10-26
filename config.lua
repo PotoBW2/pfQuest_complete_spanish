@@ -105,7 +105,7 @@ pfQuest_defconfig = {
     default = "1", type = "checkbox", config = "currentquestgivers" },
   { text = L["Mostrar los otorgantes de misiones de bajo nivel"],
     default = "0", type = "checkbox", config = "showlowlevel" },
-  { text = L["Mostrar otorgantes de misiones de nivel +3"],
+  { text = L["Display Level+3 Quest Givers"],
     default = "0", type = "checkbox", config = "showhighlevel" },
   { text = L["Display Event & Daily Quests"],
     default = "0", type = "checkbox", config = "showfestival" },
