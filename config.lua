@@ -9,7 +9,7 @@ pfQuest_config = {}
 local reset = {
   config = function()
     local dialog = StaticPopupDialogs["PFQUEST_RESET"]
-    dialog.text = L["¿Realmente quieres restablecer la configuración?"]
+    dialog.text = L["Do you really want to reset the configuration?"]
     dialog.OnAccept = function()
       pfQuest_config = nil
       ReloadUI()
@@ -19,7 +19,7 @@ local reset = {
   end,
   history = function()
     local dialog = StaticPopupDialogs["PFQUEST_RESET"]
-    dialog.text = L["¿Realmente quieres restablecer el historial de misiones?"]
+    dialog.text = L["Do you really want to reset the quest history?"]
     dialog.OnAccept = function()
       pfQuest_history = nil
       ReloadUI()
@@ -29,7 +29,7 @@ local reset = {
   end,
   cache = function()
     local dialog = StaticPopupDialogs["PFQUEST_RESET"]
-    dialog.text = L["¿Realmente quieres restablecer los cachés?"]
+    dialog.text = L["Do you really want to reset the caches?"]
     dialog.OnAccept = function()
       pfQuest_questcache = nil
       ReloadUI()
@@ -39,7 +39,7 @@ local reset = {
   end,
   everything = function()
     local dialog = StaticPopupDialogs["PFQUEST_RESET"]
-    dialog.text = L["¿Realmente quieres restablecer todo?"]
+    dialog.text = L["Do you really want to reset everything?"]
     dialog.OnAccept = function()
       pfQuest_config, pfBrowser_fav, pfQuest_history, pfQuest_colors, pfQuest_server = nil
       ReloadUI()
@@ -58,103 +58,103 @@ pfQuest_defconfig = {
 
   { text = L["General"],
     default = nil, type = "header" },
-  { text = L["Habilitar el menú en el mapa del mundo"],
+  { text = L["Enable World Map Menu"],
     default = "1", type = "checkbox", config = "worldmapmenu" },
-  { text = L["Habilitar el botón del minimapa"],
+  { text = L["Enable Minimap Button"],
     default = "1", type = "checkbox", config = "minimapbutton" },
-  { text = L["Habilitar el Rastreador de Misiones"],
+  { text = L["Enable Quest Tracker"],
     default = "1", type = "checkbox", config = "showtracker" },
-  { text = L["Habilitar botones del registro de misiones"],
+  { text = L["Enable Quest Log Buttons"],
     default = "1", type = "checkbox", config = "questlogbuttons" },
-  { text = L["Habilitar la compatibilidad con el Enlace de Búsqueda"],
+  { text = L["Enable Quest Link Support"],
     default = "1", type = "checkbox", config = "questlinks" },
-  { text = L["Mostrar los IDs de la Base de Datos"],
+  { text = L["Show Database IDs"],
     default = "0", type = "checkbox", config = "showids" },
-  { text = L["Sorteo de favoritos al iniciar sesión"],
+  { text = L["Draw Favorites On Login"],
     default = "0", type = "checkbox", config = "favonlogin" },
-  { text = L["Probabilidad mínima de caída de objetos"],
+  { text = L["Minimum Item Drop Chance"],
     default = "1", type = "text", config = "mindropchance" },
-  { text = L["Mostrar información sobre herramientas"],
+  { text = L["Show Tooltips"],
     default = "1", type = "checkbox", config = "showtooltips" },
-  { text = L["Mostrar ayuda en las descripciones emergentes"],
+  { text = L["Show Help On Tooltips"],
     default = "1", type = "checkbox", config = "tooltiphelp" },
-  { text = L["Mostrar nivel en el Rastreador de Misiones"],
+  { text = L["Show Level On Quest Tracker"],
     default = "1", type = "checkbox", config = "trackerlevel" },
-  { text = L["Mostrar nivel en el Registro de Misiones"],
+  { text = L["Show Level On Quest Log"],
     default = "0", type = "checkbox", config = "questloglevel" },
 
-  { text = L["Misiones"],
+  { text = L["Questing"],
     default = nil, type = "header" },
-  { text = L["Visibilidad del Rastreador de Misiones"],
+  { text = L["Quest Tracker Visibility"],
     default = "0", type = "text", config = "trackeralpha" },
-  { text = L["Tamaño de fuente en el Rastreador de Misiones"],
+  { text = L["Quest Tracker Font Size"],
     default = "12", type = "text", config = "trackerfontsize", },
-  { text = L["Desplegar objetivos del Rastreador de Misiones "],
+  { text = L["Quest Tracker Unfold Objectives"],
     default = "0", type = "checkbox", config = "trackerexpand" },
-  { text = L["Puntos de aparición de objetivos de la misión (mapa del mundo)"],
+  { text = L["Quest Objective Spawn Points (World Map)"],
     default = "1", type = "checkbox", config = "showspawn" },
-  { text = L["Puntos de aparición de objetivos de la misión (minimapa)"],
+  { text = L["Quest Objective Spawn Points (Mini Map)"],
     default = "1", type = "checkbox", config = "showspawnmini" },
-  { text = L["Iconos de objetivos de misiones (mapa del mundo)"],
+  { text = L["Quest Objective Icons (World Map)"],
     default = "1", type = "checkbox", config = "showcluster" },
-  { text = L["Iconos de objetivos de la misión (minimapa)"],
+  { text = L["Quest Objective Icons (Mini Map)"],
     default = "0", type = "checkbox", config = "showclustermini" },
   { text = L["Display Available Quest Givers"],
     default = "1", type = "checkbox", config = "allquestgivers" },
   { text = L["Display Current Quest Givers"],
     default = "1", type = "checkbox", config = "currentquestgivers" },
-  { text = L["Mostrar los otorgantes de misiones de bajo nivel"],
+  { text = L["Display Low Level Quest Givers"],
     default = "0", type = "checkbox", config = "showlowlevel" },
   { text = L["Display Level+3 Quest Givers"],
     default = "0", type = "checkbox", config = "showhighlevel" },
   { text = L["Display Event & Daily Quests"],
     default = "0", type = "checkbox", config = "showfestival" },
 
-  { text = L["Mapa y minimapa"],
+  { text = L["Map & Minimap"],
     default = nil, type = "header" },
-  { text = L["Habilitar nodos del minimapa"],
+  { text = L["Enable Minimap Nodes"],
     default = "1", type = "checkbox", config = "minimapnodes" },
-  { text = L["Usar iconos agrupados monocromáticos"],
+  { text = L["Use Monochrome Cluster Icons"],
     default = "0", type = "checkbox", config = "clustermono" },
-  { text = L["Usar  los iconos de nodo del minimapa recortados"],
+  { text = L["Use Cut-Out Minimap Node Icons"],
     default = "1", type = "checkbox", config = "cutoutminimap" },
-  { text = L["Usar  los iconos de nodos del mapa del mundo recortados"],
+  { text = L["Use Cut-Out World Map Node Icons"],
     default = "0", type = "checkbox", config = "cutoutworldmap" },
   { text = L["Color Map Nodes By Spawn"],
     default = "0", type = "checkbox", config = "spawncolors" },
-  { text = L["Transparencia de nodos en el mapa del mundo"],
+  { text = L["World Map Node Transparency"],
     default = "1.0", type = "text", config = "worldmaptransp" },
-  { text = L["Transparencia de nodos del minimapa"],
+  { text = L["Minimap Node Transparency"],
     default = "1.0", type = "text", config = "minimaptransp" },
-  { text = L["Transparencia de desvanecimiento de nodos"],
+  { text = L["Node Fade Transparency"],
     default = "0.3", type = "text", config = "nodefade" },
-  { text = L["Resaltar nodos al pasar el ratón por encima"],
+  { text = L["Highlight Nodes On Mouseover"],
     default = "1", type = "checkbox", config = "mouseover" },
 
-  { text = L["Rutas"],
+  { text = L["Routes"],
     default = nil, type = "header" },
-  { text = L["Mostrar ruta entre objetos"],
+  { text = L["Show Route Between Objects"],
     default = "1", type = "checkbox", config = "routes" },
-  { text = L["Incluir ubicaciones de misiones unificadas"],
+  { text = L["Include Unified Quest Locations"],
     default = "1", type = "checkbox", config = "routecluster" },
-  { text = L["Incluir finalizadores de misiones"],
+  { text = L["Include Quest Enders"],
     default = "1", type = "checkbox", config = "routeender" },
-  { text = L["Incluir iniciadores de misiones"],
+  { text = L["Include Quest Starters"],
     default = "0", type = "checkbox", config = "routestarter" },
-  { text = L["Mostrar ruta en el minimapa"],
+  { text = L["Show Route On Minimap"],
     default = "0", type = "checkbox", config = "routeminimap" },
-  { text = L["Mostrar flechas a lo largo de las rutas"],
+  { text = L["Show Arrow Along Routes"],
     default = "1", type = "checkbox", config = "arrow" },
 
-  { text = L["Datos del usuario"],
+  { text = L["User Data"],
     default = nil, type = "header" },
-  { text = L["Restablecer configuración"],
+  { text = L["Reset Configuration"],
     default = "1", type = "button", func = reset.config },
-  { text = L["Restablecer historial de misiones"],
+  { text = L["Reset Quest History"],
     default = "1", type = "button", func = reset.history },
-  { text = L["Restablecer caché"],
+  { text = L["Reset Cache"],
     default = "1", type = "button", func = reset.cache },
-  { text = L["Restablecer todo"],
+  { text = L["Reset Everything"],
     default = "1", type = "button", func = reset.everything },
 }
 
@@ -484,7 +484,7 @@ do -- welcome/init popup dialog
   pfQuestInit.title = pfQuestInit:CreateFontString("Status", "LOW", "GameFontWhite")
   pfQuestInit.title:SetPoint("TOP", pfQuestInit, "TOP", 0, -17)
   pfQuestInit.title:SetJustifyH("LEFT")
-  pfQuestInit.title:SetText(L["Por favor seleccione su preferida |cff33ffccpf|cffffffffQuest|r modo:"])
+  pfQuestInit.title:SetText(L["Please select your preferred |cff33ffccpf|cffffffffQuest|r mode:"])
 
   -- questing mode
   local buttons = {
@@ -556,15 +556,15 @@ do -- welcome/init popup dialog
   pfQuestInit.checkbox.caption = pfQuestInit:CreateFontString("Status", "LOW", "GameFontWhite")
   pfQuestInit.checkbox.caption:SetPoint("LEFT", pfQuestInit.checkbox, "RIGHT", 5, 0)
   pfQuestInit.checkbox.caption:SetJustifyH("LEFT")
-  pfQuestInit.checkbox.caption:SetText(L["Mostrar flecha de navegación"])
+  pfQuestInit.checkbox.caption:SetText(L["Show Navigation Arrow"])
   pfQuestInit.checkbox:SetScript("OnClick", function()
     config_stage.arrow = this:GetChecked()
   end)
 
   pfQuestInit.checkbox:SetScript("OnEnter", function()
     GameTooltip_SetDefaultAnchor(GameTooltip, this)
-    GameTooltip:SetText(L["Flecha de navegación"])
-    GameTooltip:AddLine(L["Muestra la flecha de navegación que te señala la ubicación de misión más cercana."], 1, 1, 1, true)
+    GameTooltip:SetText(L["Navigation Arrow"])
+    GameTooltip:AddLine(L["Show navigation arrow that points you to the nearest quest location."], 1, 1, 1, true)
     GameTooltip:SetWidth(100)
     GameTooltip:Show()
   end)
@@ -580,7 +580,7 @@ do -- welcome/init popup dialog
   pfQuestInit.save:SetPoint("BOTTOMRIGHT", -10, 10)
   pfQuestInit.save.text = pfQuestInit.save:CreateFontString("Caption", "LOW", "GameFontWhite")
   pfQuestInit.save.text:SetAllPoints(pfQuestInit.save)
-  pfQuestInit.save.text:SetText("Guardar y cerrar")
+  pfQuestInit.save.text:SetText("Save & Close")
 
   pfUI.api.SkinButton(pfQuestInit.save)
 
