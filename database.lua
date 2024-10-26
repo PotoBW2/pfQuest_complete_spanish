@@ -1685,7 +1685,7 @@ pfServerScan:SetScript("OnUpdate", function()
 
   -- scan X items per update
   for i=this.scanID,this.scanID+this.perloop do
-    pfServerScan.header:SetText(pfQuest_Loc["Escaneando el servidor en busca de artículos..."] .. " " .. string.format("%.1f",100*i/this.max) .. "%")
+    pfServerScan.header:SetText(pfQuest_Loc["Scanning server for items..."] .. " " .. string.format("%.1f",100*i/this.max) .. "%")
     local link = "item:" .. i .. ":0:0:0"
 
     ItemRefTooltip:SetOwner(UIParent, "ANCHOR_PRESERVE")
