@@ -133,6 +133,7 @@ local locales = {
     ["Search unit"] = "Buscar objeto",
     ["Server scan started..."] = "Escanea del servidor empezado...",
     ["Shift-Click"] = "Shift clic",
+    ["Save & Close"] = "Guardar y Cerrar",
     ["Show"] = "Mostrar",
     ["Show all chests on map"] = "Mostrar todos los cofres en el mapa",
     ["Show all quests on map"] = "Mostrar todas las misiones en el mapa",
