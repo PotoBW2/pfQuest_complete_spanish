@@ -8,12 +8,14 @@ SlashCmdList["PFDB"] = function(input, editbox)
 
   if (input == "" or input == nil) then
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffccpf|cffffffffQuest (v" .. pfQuestConfig.version .. "):")
+    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff lock |cffcccccc - " .. pfQuest_Loc["Lock map tracker"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff tracker |cffcccccc - " .. pfQuest_Loc["Show map tracker"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff journal |cffcccccc - " .. pfQuest_Loc["Show quest journal"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff arrow |cffcccccc - " .. pfQuest_Loc["Show quest arrow"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff show |cffcccccc - " .. pfQuest_Loc["Show database interface"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff config |cffcccccc - " .. pfQuest_Loc["Show configuration interface"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff locale |cffcccccc - " .. pfQuest_Loc["Display addon locales"])
+    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff track <list>|cffcccccc - " .. pfQuest_Loc["Show available tracking lists"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff unit <unit> |cffcccccc - " .. pfQuest_Loc["Search unit"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff object <gameobject> |cffcccccc - " .. pfQuest_Loc["Search object"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff item <item> |cffcccccc - " .. pfQuest_Loc["Search loot"])
@@ -22,13 +24,6 @@ SlashCmdList["PFDB"] = function(input, editbox)
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff quests |cffcccccc - " .. pfQuest_Loc["Show all quests on map"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff clean |cffcccccc - " .. pfQuest_Loc["Clean Map"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff reset |cffcccccc - " .. pfQuest_Loc["Reset Map"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff chests |cffcccccc - " .. pfQuest_Loc["Show all chests on map"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff taxi [faction]|cffcccccc - " .. pfQuest_Loc["Show all taxi nodes of [faction]"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff rares [min, [max]]|cffcccccc - " .. pfQuest_Loc["Show all rare mobs of Level [min] to [max]"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff mines [min, [max]] |cffcccccc - " .. pfQuest_Loc["Show mines with skill range of [min] to [max]"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff mines auto |cffcccccc - " .. pfQuest_Loc["Show mines with an appropriate skill level for your character"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff herbs [min, [max]] |cffcccccc - " .. pfQuest_Loc["Show herbs with skill range of [min] to [max]"])
-    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff herbs auto |cffcccccc - " .. pfQuest_Loc["Show herbs with an appropriate skill level for your character"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff scan |cffcccccc - " .. pfQuest_Loc["Scan the server for custom items"])
     DEFAULT_CHAT_FRAME:AddMessage("|cff33ffcc/db|cffffffff query |cffcccccc - " .. pfQuest_Loc["Query the server for completed quests"])
     return
@@ -103,54 +98,153 @@ SlashCmdList["PFDB"] = function(input, editbox)
     return
   end
 
-  -- argument: meta
-  if (arg1 == "meta") then
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[2], commandlist[3], commandlist[4] }, meta)
+  -- argument: track
+  if (arg1 == "track" or arg1 == "meta") then
+    local list = commandlist[2]
+
+    -- show available lists
+    if not list or list == "" then
+      local available = nil
+      for list in pairs(pfDB["meta"]) do
+        available = (available and available .. ", " or "") .. "\"|cff33ffcc"..list.."|r\""
+      end
+
+      DEFAULT_CHAT_FRAME:AddMessage(string.format(pfQuest_Loc["Available tracking targets are: %s. Or type \"|cff33ffcc/db track clean|r\" to untrack all."], available))
+      return
+    end
+
+    -- clean all tracking results
+    if commandlist[2] == "clean" then
+      for list in pairs(pfDB["meta"]) do
+        pfDatabase:TrackMeta(list, false)
+      end
+
+      return
+    end
+
+    -- load arguments into state
+    local state = {
+      min = commandlist[3],
+      max = commandlist[4],
+      faction = commandlist[3],
+    }
+
+    -- read skill for auto mines
+    if (list == "mines" and commandlist[3] == "auto") then
+      state.max = pfDatabase:GetPlayerSkill(186) or 0
+      state.min = state.max - 100
+    end
+
+    -- read skill for auto herbs
+    if (list == "herbs" and commandlist[3] == "auto") then
+      state.max = pfDatabase:GetPlayerSkill(182) or 0
+      state.min = state.max - 100
+    end
+
+    -- clean specific list
+    if commandlist[3] == "clean" then
+      state = nil
+    end
+
+    -- perform tracking
+    local maps = pfDatabase:TrackMeta(list, state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
 
-  -- argument: chests
+  -- warn about deprecated arguments
+  local deprecated = {
+    ["chests"] = true, ["taxi"] = true, ["flights"] = true, ["rares"] = true, ["mines"] = true, ["herbs"] = true
+  }
+
+  if deprecated[arg1] then
+    DEFAULT_CHAT_FRAME:AddMessage(string.format(pfQuest_Loc["|cffffcc00WARNING:|r The command \"|cff33ffcc/db %s|r\" is deprecated and will be removed soon. Please use the \"|cff33ffcc/db track %s|r\" instead to achieve the same functionality."], arg1, arg1))
+  end
+
+  -- argument: chests (deprecated)
   if (arg1 == "chests") then
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[1] }, meta)
+    local state = true
+
+    if commandlist[2] == "clean" then
+      state = nil
+    end
+
+    local maps = pfDatabase:TrackMeta("chests", state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
 
-  -- argument: taxi
-  if (arg1 == "taxi") then
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[1], commandlist[2] }, meta)
+  -- argument: taxi (deprecated)
+  if (arg1 == "flights" or arg1 == "taxi") then
+    local state = {
+      faction = commandlist[2],
+    }
+
+    if commandlist[2] == "clean" then
+      state = nil
+    end
+
+    local maps = pfDatabase:TrackMeta("flight", state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
 
-  -- argument: rares
+  -- argument: rares (deprecated)
   if (arg1 == "rares") then
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[1], commandlist[2], commandlist[3] }, meta)
+    local state = {
+      min = commandlist[2],
+      max = commandlist[3],
+    }
+
+    if commandlist[2] == "clean" then
+      state = nil
+    end
+
+    local maps = pfDatabase:TrackMeta("rares", state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
 
-  -- argument: mines
+  -- argument: mines (deprecated)
   if (arg1 == "mines") then
+    local state = {
+      min = commandlist[2],
+      max = commandlist[3],
+    }
+
     if (arg2 == "auto") then
-      -- id 186 is Mining
-      commandlist[3] = pfDatabase:GetPlayerSkill(186) or 0
-      commandlist[2] = commandlist[3] - 100
+      state.max = pfDatabase:GetPlayerSkill(186) or 0
+      state.min = state.max - 100
     end
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[1], commandlist[2], commandlist[3] }, meta)
+
+    if commandlist[2] == "clean" then
+      state = nil
+    end
+
+    state = commandlist[2] == "clean" and nil or state
+    local maps = pfDatabase:TrackMeta("mines", state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
 
-  -- argument: herbs
+  -- argument: herbs (deprecated)
   if (arg1 == "herbs") then
+    local state = {
+      min = commandlist[2],
+      max = commandlist[3],
+    }
+
     if (arg2 == "auto") then
-      -- id 182 is Herbalism
-      commandlist[3] = pfDatabase:GetPlayerSkill(182) or 0
-      commandlist[2] = commandlist[3] - 100
+      state.max = pfDatabase:GetPlayerSkill(182) or 0
+      state.min = state.max - 100
     end
-    local maps = pfDatabase:SearchMetaRelation({ commandlist[1], commandlist[2], commandlist[3] }, meta)
+
+    if commandlist[2] == "clean" then
+      state = nil
+    end
+
+    state = commandlist[2] == "clean" and nil or state
+    local maps = pfDatabase:TrackMeta("herbs", state)
     pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
     return
   end
@@ -177,6 +271,13 @@ SlashCmdList["PFDB"] = function(input, editbox)
   -- argument: tracker
   if (arg1 == "tracker") then
     if pfQuest.tracker then pfQuest.tracker:Show() end
+    return
+  end
+
+  -- argument: lock
+  if (arg1 == "lock") then
+    pfQuest_config.lock = not pfQuest_config.lock
+    DEFAULT_CHAT_FRAME:AddMessage("|cff33ffccpf|cffffffffQuest Tracker: " .. ( pfQuest_config.lock and "Locked" or "Unlocked" ))
     return
   end
 

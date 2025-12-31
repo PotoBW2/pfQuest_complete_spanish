@@ -1,115 +1,188 @@
-# pfQuest_complete_spanish
+# pfQuest
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/mode.png" float="right" align="right" width="25%">
 
-Este es un complemento para World of Warcraft Vanilla (1.12) . Ayuda a los jugadores a encontrar varios objetos y misiones dentro del juego. El complemento lee los objetivos de las misiones, los analiza y utiliza su base de datos interna para trazar las coincidencias encontradas en el mundo y el minimapa. Viene con una interfaz gráfica de usuario para explorar todos los objetos conocidos. Si uno de los elementos aún no está disponible en tu reino, verás un [?] delante del nombre.
+This is an addon for World of Warcraft Vanilla (1.12) and The Burning Crusade (2.4.3). It helps players to find several ingame objects and quests. The addon reads questobjectives, parses them and uses its internal database to plot the found matches on the world- and minimap. It ships with a GUI to browse through all known objects. If one of the items is not yet available on your realm, you'll see a [?] in front of the name.
 
-El complemento no está diseñado para ser una guía de misiones o de recorridos turísticos, sino que los objetivos son proporcionar una versión precisa del juego de [AoWoW](https://classicdb.ch/) o [Wowhead](http://www.wowhead.com/). La versión original funciona con la base de datos de [VMaNGOS](https://github.com/vmangos). La versión de Burning Crusade utiliza datos del proyecto [CMaNGOS](https://github.com/cmangos) con traducciones tomadas de [MaNGOS Extras](https://github.com/MangosExtras).
+The addon is not designed to be a quest- or tourguide, instead the goals are to provide an accurate in-game version of [AoWoW](http://db.vanillagaming.org/) or [Wowhead](http://www.wowhead.com/). The vanilla version is powered by the database of [VMaNGOS](https://github.com/vmangos). The Burning Crusade version is using data from the [CMaNGOS](https://github.com/cmangos) project with translations taken from [MaNGOS Extras](https://github.com/MangosExtras).
 
 pfQuest is the successor of [ShaguQuest](https://shagu.org/ShaguQuest/) and has been entirely written from scratch. In comparison to [ShaguQuest](https://shagu.org/ShaguQuest/), this addon does not depend on any specific map- or questlog addon. It's designed to support the default interface aswell as every other addon. In case you experience any addon conflicts, please add an issue to the bugtracker.
 
-pfQuest es el sucesor de [ShaguQuest](https://shagu.org/ShaguQuest/) y ha sido escrito completamente desde cero. En comparación con [ShaguQuest](https://shagu.org/ShaguQuest/), este complemento no depende de ningún mapa específico ni de ningún complemento de registro de misiones. Está diseñado para admitir la interfaz predeterminada y todos los demás complementos. En caso de que experimentes algún conflicto con los complementos, agrega un problema al rastreador de errores de la página [original de Shagu](https://github.com/shagu/pfQuest).
-
-# Traducción por PotoBW
-
-Shagu brindó todas las herramientas para hacer las traducciones. Así que el mérito es para ese pedazo de hombre (quien sabe, quizas sea una mujer). Las traducciones están hechas en Google Translate así que pueden estar mal traducidas o intelegibles. En caso de que tenga alguna inconformidad al respecto puede contactarme para arreglar estas malas traducciones.
-
-Telefono, WhatSapp, Telegram: +53 55920042
-
-Telegram: @potobw
-
-Correo: dmosquerabw@gmail.com
-
-
-# Donaciones
-
-PayPal: joseamosher@gmail.com
-
-# Descargas
-
-Puedes consultar la página [[Últimos cambios]](https://github.com/PotoBW2/pfQuest_complete_spanish/commits/master) para ver qué ha cambiado recientemente. O consultar los últimos [cambios de Shagu](https://github.com/shagu/pfQuest/commits/master).
+# Downloads
+You can check the [[Latest Changes]](https://github.com/shagu/pfQuest/commits/master) page to see what has changed recently.
 
 ## World of Warcraft: **Vanilla**
-1. **[[Download pfQuest]](https://github.com/PotoBW2/pfQuest_complete_spanish/releases/download/pfQuest_Complete_Spanish_1.01/pfQuest.rar)** (\*)
-2. Descomprima el archivo RAR
-3. Mueva `pfQuest` a la carpeta  `Wow-Directory\Interface\AddOns`
-4. Reiniciar Wow
-5. Establezca "Memoria de script" en "0" ([Cómo hacerlo](https://i.imgur.com/rZXwaK0.jpg))
+1. **[[Download pfQuest]](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-full.zip)** (\*)
+2. Unpack the Zip-file
+3. Move the `pfQuest` folder into `Wow-Directory\Interface\AddOns`
+4. Restart Wow
+5. Set "Script Memory" to "0" ([HowTo](https://i.imgur.com/rZXwaK0.jpg))
 
+\*) *You can optionally pick one of the slim version downloads instead. Those version are limited to only one specific language: [English](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-enUS.zip),
+[Korean](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-koKR.zip),
+[French](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-frFR.zip),
+[German](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-deDE.zip),
+[Chinese](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-zhCN.zip),
+[Spanish](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-esES.zip),
+[Russian](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-ruRU.zip)*
 
-## Controles
+## World of Warcraft: **The Burning Crusade**
+1. **[[Download pfQuest]](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-full-tbc.zip)** (\*)
+2. Unpack the Zip-file
+3. Move the `pfQuest-tbc` folder into `Wow-Directory\Interface\AddOns`
+4. Restart Wow
 
-- Para cambiar los colores de los nodos en el mapa mundial, **haz clic** en el nodo.
-- Para eliminar misiones realizadas anteriormente del mapa, **\<shift\>-haz clic** en el dador de misiones en el mapa mundial
-- Para ocultar temporalmente los grupos en el mapa mundial, mantén presionada la tecla **\<ctrl\>**
-- Para ocultar temporalmente los nodos en el minimapa, pasa el cursor sobre él y mantén presionada la tecla **\<ctrl\>**
-- Para mover el botón del minimapa, **\<shift\>-arrastra** el ícono
-- Para mover la flecha, **\<shift\>-arrastra** el marco
+\*) *You can optionally pick one of the slim version downloads instead. Those version are limited to only one specific language: [English](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-enUS-tbc.zip),
+[Korean](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-koKR-tbc.zip),
+[French](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-frFR-tbc.zip),
+[German](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-deDE-tbc.zip),
+[Chinese](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-zhCN-tbc.zip),
+[Spanish](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-esES-tbc.zip),
+[Russian](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-ruRU-tbc.zip)*
 
-## Uso de memoria adicional
+## World of Warcraft: **Wrath of the Lich King**
 
-El complemento incluye una base de datos completa de todos los engendros, objetos, elementos y misiones y, por lo tanto, incluye una enorme base de datos (~80 MB, incluidas todas las configuraciones regionales) que se carga en la memoria al iniciar el juego. Sin embargo, el uso de memoria de pfQuest es persistente y no aumenta más con el tiempo, por lo que no hay nada malo en el rendimiento en absoluto. Para deshacerte de cualquier advertencia, puedes establecer el límite de memoria del complemento en "0", que se lee como "sin límite". Esta opción se puede encontrar en la [pantalla de selección de personajes](https://i.imgur.com/rZXwaK0.jpg).
+> [!IMPORTANT]
+>
+> **This is a BETA version of pfQuest**
+>
+> It is able to run on a WotLK (3.3.5a) client, but does not yet ship a WotLK database.
+> Every available content is limited to Vanilla & TBC as of now.
 
-# Nodos de mapa y minimapa
+1. **[[Download pfQuest]](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-full-wotlk.zip)** (\*)
+2. Unpack the Zip-file
+3. Move the `pfQuest-wotlk` folder into `Wow-Directory\Interface\AddOns`
+4. Restart Wow
+
+\*) *You can optionally pick one of the slim version downloads instead. Those version are limited to only one specific language: [English](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-enUS-wotlk.zip),
+[Korean](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-koKR-wotlk.zip),
+[French](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-frFR-wotlk.zip),
+[German](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-deDE-wotlk.zip),
+[Chinese](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-zhCN-wotlk.zip),
+[Spanish](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-esES-wotlk.zip),
+[Russian](https://github.com/shagu/pfQuest/releases/latest/download/pfQuest-ruRU-wotlk.zip)*
+
+## Development Version
+The development version includes databases of all languages and client expansions. Based on the folder name, this will launch in both vanilla and tbc mode. Due to the amount of included data, this snapshot will lead to a higher RAM/Disk-Usage and slightly increased loading times.
+
+- Download via Git: [`https://github.com/shagu/pfQuest.git`](https://github.com/shagu/pfQuest.git)
+- Download via Browser: **[Zip File](https://github.com/shagu/pfQuest/archive/master.zip)**
+
+## Controls
+- To change node colors on the World Map, **click** the node.
+- To remove previously done quests from the map, **\<shift\>-click** the quest giver on the world-map
+- To temporarily hide clusters on the world-map, hold the **\<ctrl\>-key**
+- To temporarily hide nodes on the mini-map, hover it and hold the **\<ctrl\>-key**
+- To move the minimap-button, **\<shift\>-drag** the icon
+- To move the arrow, **\<shift\>-drag** the frame
+
+## Addon Memory Usage
+The addon ships an entire database of all spawns, objects, items and quests and therefore includes a huge database (~80 MB incl. all locales) that gets loaded into memory on game launch. However, the memory usage of pfQuest is persistent and does not increase any further over time, so there's nothing bad on performance at all. Depending on the download you pick (especially the full packages), you might see a message that warns you about an addon consuming too much memory. To get rid of that warning, you can set the addon memory limit to `0` which reads as `no limit`. This option can be found in the [character selection screen](https://i.imgur.com/rZXwaK0.jpg).
+
+# Map & Minimap Nodes
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/arrow.jpg" width="35.8%" align="left">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/minimap-nodes.png" width="59.25%">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/map-quests.png" width="55.35%" align="left">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/map-spawnpoints.png" width="39.65%">
 
-# Seguimiento automático
+# Auto-Tracking
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/map-autotrack.png" float="right" align="right" width="30%">
-El complemento incluye 4 modos diferentes que definen cómo se deben gestionar los objetivos de misiones nuevos o actualizados. Estos modos se pueden seleccionar en el menú desplegable que se encuentra en la parte superior derecha del mapa.
+The addon features 4 different modes that define how the new or updated questobjectives should be handled. Those modes can be selected on the dropdown menu in the top-right area the map.
 
-### Opción: Todas las misiones
-Cada misión se mostrará y actualizará automáticamente en el mapa.
+### Option: All Quests
+Every quest will be automatically shown and updated on the map.
 
-### Opción: Misiones rastreadas
-Sólo las misiones rastreadas (Shift-Clic) se mostrarán y actualizarán automáticamente en el mapa.
+### Option: Tracked Quests
+Only tracked quests (Shift-Click) will be automatically shown and updated on the map.
 
-### Opción: Selección manual
-Solo se mostrarán los objetivos de misiones que se hayan mostrado manualmente (botón "Mostrar" en el registro de misiones).
-Los objetivos de misiones completados se eliminarán automáticamente del mapa.
+### Option: Manual Selection
+Only quest objectives that have been manually displayed ("Show"-Button in the Questlog) will be displayed.
+Completed quest objectives will be still automatically removed from the map.
 
-### Opción: Ocultar misiones
-Igual que "Selección manual" y además, los otorgadores de misiones no se mostrarán automáticamente.
-Además, los objetivos de misiones completados permanecerán en el mapa. Este modo no afectará a ninguno de los nodos del mapa creados.
+### Option: Hide Quests
+Same as "Manual Selection" and in addition to that, Quest-Givers won't be shown automatically.
+Also completed quest objectives will remain on the map. This mode won't touch any of the map nodes created.
 
-# Navegador de base de datos
+# Database Browser
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/browser-spawn.png" align="left" width="30%">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/browser-quests.png" align="left" width="30%">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/browser-items.png" align="center" width="33%">
 
-La interfaz gráfica de usuario de la base de datos le permite marcar como favoritas y explorar todas las entradas dentro de la base de datos de pfQuest. Puede abrirse haciendo clic en el icono del minimapa de pfQuest o mediante `/db show`. El navegador mostrará un máximo de 100 entradas a la vez para cada pestaña. Utilice la rueda de desplazamiento o presione las flechas arriba/abajo para subir y bajar por la lista.
+The database GUI allows you to bookmark and browse through all entries within the pfQuest database. It can be opened by a click on the pfQuest minimap icon or via `/db show`. The browser will show a maximum of 100 entries at once for each tab. Use your scrollwheel or press the up/down arrows to go up and down the list.
 
-# Integración de Questlog
-### Enlaces de misiones
+# Questlog Integration
+### Questlinks
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/questlink.png" float="right" align="right" width="30%">
 
-En los servidores que admiten enlaces de misiones, al hacer clic con la tecla Shift presionada en una misión seleccionada, se agregará un enlace de misión al chat. Esos enlaces son similares a los enlaces de misiones conocidos de TBC+ y son compatibles con los producidos por [ShaguQuest](https://shagu.org/ShaguQuest/), [Questie](https://github.com/AeroScripts/QuestieDev) y [QuestLink](http://addons.us.to/addon/questlink-0). Ten en cuenta que algunos servidores (por ejemplo, Kronos) están bloqueando los enlaces de misiones y tendrás que desactivar esta función en la configuración de pfQuest para poder imprimir el nombre de la misión en el chat en lugar de agregar un enlace de misión. Los enlaces de misiones enviados de pfQuest a pfQuest son independientes de la configuración regional y dependen del ID de la misión.
+On servers that support questlinks, a shift-click on a selected quest will add a questlink into chat. Those links are similar to the known questlinks from TBC+ and are compatible to ones produced by [ShaguQuest](https://shagu.org/ShaguQuest/), [Questie](https://github.com/AeroScripts/QuestieDev) and [QuestLink](http://addons.us.to/addon/questlink-0). Please be aware that some servers (e.g Kronos) are blocking questlinks and you'll have to disable this feature in the pfQuest settings, in order to print the quest name into the chat instead of adding a questlink. Questlinks sent from pfQuest to pfQuest are locale independent and rely on the Quest ID.
 
 The tooltip will display quest information such as your current state on the quest (new, in progress, already done) as well as the quest objective text and the full quest description. In addition to that, the suggested level and the minimum level are shown.
 
-La información sobre herramientas mostrará información sobre la misión, como tu estado actual en la misión (nueva, en progreso, ya realizada), así como el texto del objetivo de la misión y la descripción completa de la misión. Además, se muestran el nivel sugerido y el nivel mínimo.
-
-### Botones de Registro de Misiones
+### Questlog Buttons
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/questlog-integration.png" align="left" width="300">
 
-El registro de misiones mostrará 4 botones adicionales en cada misión para facilitar el seguimiento manual de las misiones. Esos botones se pueden usar para mostrar u ocultar misiones individuales en el mapa. Esos botones no afectarán las entradas que hayas colocado mediante el navegador de la base de datos.
+The questlog will show 4 additional buttons on each quest in order to provide easy manual quest tracking. Those buttons can be used to show or hide individual quests on the map. Those buttons won't affect the entries that you've placed by using the database browser.
 
-**Mostrar**  
-El botón "Mostrar" agregará los objetivos de la misión actual al mapa.
+**Show**  
+The "Show" button will add the questobjectives of the current quest to the map.
 
-**Ocultar**  
-El botón "Ocultar" eliminará la misión seleccionada actualmente del mapa.
+**Hide**  
+The "Hide" button will remove the current selected quest from the map.
 
-**Limpiar**  
-El botón "Limpiar" eliminará todos los nodos que pfQuest haya colocado en el mapa.
+**Clean**  
+The "Clean" button will remove all nodes that have been placed by pfQuest from the map.
 
-**Restablecer**  
+**Reset**  
 The "Reset" button will restore the default visibility of icons to match the set values on the map dropdown menu (e.g "All Quests" by default).
 
-El botón "Restablecer" restaurará la visibilidad predeterminada de los íconos para que coincidan con los valores establecidos en el menú desplegable del mapa (por ejemplo, "Todas las misiones" de forma predeterminada).
-
-# Interfaz de línea de comandos de chat/macros
+# Chat/Macro CLI
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/chat-cli.png">
 
-El complemento cuenta con una interfaz CLI que te permite crear fácilmente macros para mostrar tus hierbas o vetas de minas favoritas. Digamos que quieres mostrar todos los depósitos de **Depósito de hierro**, entonces escribe en el chat o crea una macro con el texto: `/db object Iron Deposit`. También puedes mostrar todas las minas en el mapa escribiendo: `/db mines`. Esto se puede ampliar dando la habilidad mínima y máxima requerida como parámetro, como: `/db mines 150 225` para mostrar todos los minerales entre la habilidad 150 y 225. El parámetro `mines` también se puede reemplazar por `herbs`, `rares`, `chests` o `taxi` para mostrarlos en su lugar. Si `/db` no funciona para ti, también hay otros alias disponibles como `/shagu`, `pfquest` y `/pfdb`.
+The addon features a CLI interface which allows you to easilly create macros to show your favourite herb or mining-veins. Let's say you want to display all **Iron Deposit** deposits, then type in chat or create a macro with the text: `/db object Iron Deposit`. You can also display all mines on the map by typing: `/db track mines`. This can be extended by giving the minimum and maximum required skill as paramter, like: `/db track mines 150 225` to display all ores between skill 150 and 225. The `mines` parameter can also be replaced by `herbs`, `rares`, `chests`, `taxi` and many more in order to show those instead. If `/db` doesn't work for you, there are also some other aliases available like `/shagu`, `pfquest` and `/pfdb`.
+
+### Basic Commands
+```
+/db lock                Lock map tracker
+/db tracker             Show map tracker
+/db journal             Show quest journal
+/db arrow               Show quest arrow
+/db show                Show database interface
+/db config              Show configuration interface
+/db locale              Display addon locales
+/db scan                Scan the server for custom items
+```
+
+### Questing
+```
+/db reset               Reload all quests on map
+/db query               Query the server for completed quests
+```
+
+### Database
+```
+/db unit <unit>         Search for specific units by name (e.g Thrall)
+/db object <object>     Search for gameobjects by name (e.g Iron Deposit)
+/db item <item>         Search for units and objects dropping an item (e.g Runecloth)
+/db vendor <item>       Search for vendors that sell a specific item (e.g Jagged Arrow)
+/db quest <questname>   Search for a specific quest by name
+/db clean               Clean all database search results from map
+```
+
+### Tracking
+```
+/db track               Shows an overview of all trackable lists
+/db track clean         Cleans all tracked lists at once
+/db track <list>        Shows all objects of <list> on the map
+/db track <list> clean  Removes all objects of <list> from the map
+```
+
+**Examples:**
+```
+/db track mines         Shows all mines on the map
+/db track mines auto    Shows all mines that are in the characters current skill range
+/db track mines 50 150  Shows all mines that require skill 50 to 150
+/db track mines clean   Cleans all mines from the map
+```
+
+*Currently available tracking lists are: `repair`, `mines`, `vendor`, `herbs`, `fish`,
+`meetingstone`, `rares`, `auctioneer`, `battlemaster`, `banker`, `chests`,
+`flight`, `stablemaster`, `innkeeper`, `spirithealer`, `mailbox`*

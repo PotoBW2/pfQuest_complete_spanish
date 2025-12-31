@@ -688,11 +688,11 @@ function pfMap:BuildNode(name, parent)
   local f = CreateFrame("Button", name, parent)
 
   if parent == WorldMapButton then
-    f.defalpha = pfQuest_config["worldmaptransp"] + 0
-    f.defsize = 16
+    f.defalpha = tonumber(pfQuest_config["worldmaptransp"]) or 1
+    f.defsize = 14
   else
-    f.defalpha = pfQuest_config["minimaptransp"] + 0
-    f.defsize = 16
+    f.defalpha = tonumber(pfQuest_config["minimaptransp"]) or 1
+    f.defsize = 14
     f.minimap = true
   end
 
@@ -706,6 +706,10 @@ function pfMap:BuildNode(name, parent)
   f.tex = f:CreateTexture(nil, "BACKGROUND")
   f.tex:SetAllPoints(f)
 
+  f.pic = f:CreateTexture(nil, "NORMAL")
+  f.pic:SetPoint("TOPLEFT", f, "TOPLEFT", 1, -1)
+  f.pic:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -1, 1)
+
   f.hl = f:CreateTexture(nil, "BORDER")
   f.hl:SetTexture(pfQuestConfig.path.."\\img\\track")
   f.hl:SetPoint("TOPLEFT", f, "TOPLEFT", -5, 5)
@@ -715,7 +719,7 @@ function pfMap:BuildNode(name, parent)
 end
 
 pfMap.highlightdb = {}
-function pfMap:UpdateNode(frame, node, color, obj)
+function pfMap:UpdateNode(frame, node, color, obj, distance)
   -- clear node to title association table
   if pfMap.highlightdb[frame] then
     for k,v in pairs(pfMap.highlightdb[frame]) do
@@ -764,6 +768,8 @@ function pfMap:UpdateNode(frame, node, color, obj)
       frame.qlvl        = tab.qlvl
       frame.itemreq     = tab.itemreq
       frame.arrow       = tab.arrow
+      frame.icon        = tab.icon
+      frame.fade_range  = tab.fade_range
 
       if pfQuest_config["spawncolors"] == "1" then
         frame.color = tab.spawn or tab.title
@@ -776,6 +782,7 @@ function pfMap:UpdateNode(frame, node, color, obj)
   if ( frame.updateTexture or frame.updateVertex or not frame.tex:GetTexture() ) and frame.texture then
     frame.tex:SetTexture(frame.texture)
     frame.tex:SetVertexColor(1,1,1)
+    frame.pic:Hide()
 
     if frame.updateVertex and frame.vertex then
       local r, g, b = unpack(frame.vertex)
@@ -786,7 +793,26 @@ function pfMap:UpdateNode(frame, node, color, obj)
   end
 
   if ( frame.updateColor or frame.updateTexture or not frame.tex:GetTexture() ) and not frame.texture then
-    local r,g,b = str2rgb(frame.color)
+    local r, g, b = str2rgb(frame.color)
+
+    if (frame.title and pfQuest.icons[frame.title]) or frame.icon then
+      local texture = (frame.title and pfQuest.icons[frame.title]) or frame.icon
+      frame.pic:SetTexture(texture)
+      frame.pic:Show()
+
+      if obj == "minimap" then
+        local halfsize = pfMap.drawlayer:GetWidth()/2
+        local fade_range = frame.fade_range or 8
+        local fade_in = halfsize/100*(fade_range-4)
+        local fade_out = halfsize/100*(fade_range+4)
+        local alpha = ((distance or fade_out) - fade_in) / (fade_out - fade_in)
+        alpha = math.max(alpha, 0)
+        alpha = math.min(alpha, 1)
+        frame.pic:SetAlpha(alpha)
+      end
+    else
+      frame.pic:Hide()
+    end
 
     if obj == "minimap" and pfQuest_config["cutoutminimap"] == "1" then
       frame.tex:SetTexture(pfQuestConfig.path.."\\img\\nodecut")
@@ -794,9 +820,6 @@ function pfMap:UpdateNode(frame, node, color, obj)
     elseif obj ~= "minimap" and pfQuest_config["cutoutworldmap"] == "1" then
       frame.tex:SetTexture(pfQuestConfig.path.."\\img\\nodecut")
       frame.tex:SetVertexColor(r,g,b,1)
-    elseif frame.title and pfQuest.icons[frame.title] then
-      frame.tex:SetTexture(pfQuest.icons[frame.title])
-      frame.tex:SetVertexColor(1,1,1,1)
     else
       frame.tex:SetTexture(pfQuestConfig.path.."\\img\\node")
       frame.tex:SetVertexColor(r,g,b,1)
@@ -815,7 +838,7 @@ function pfMap:UpdateNode(frame, node, color, obj)
   local target = frame.texture and pfQuest.route and pfQuest.route.IsTarget(frame) or nil
 
   -- set default sizes for different node types
-  frame.defsize = (frame.cluster or frame.layer == 4) and 22 or 16
+  frame.defsize = (frame.cluster or frame.layer == 4) and 18 or 14
 
   -- make the current route target visible
   if target then frame.hl:Show() else frame.hl:Hide() end
@@ -973,10 +996,11 @@ function pfMap:UpdateMinimap()
         end
 
         local display = nil
+        local distance = sqrt(xPos * xPos + yPos * yPos)
+
         if pfUI.minimap then
           display = ( abs(xPos) + 8 < pfMap.drawlayer:GetWidth() / 2 and abs(yPos) + 8 < pfMap.drawlayer:GetHeight()/2 ) and true or nil
         else
-          local distance = sqrt(xPos * xPos + yPos * yPos)
           display = ( distance + 8 < pfMap.drawlayer:GetWidth() / 2 ) and true or nil
         end
 
@@ -985,7 +1009,7 @@ function pfMap:UpdateMinimap()
             pfMap.mpins[i] = pfMap:BuildNode(nodename .. i, pfMap.drawlayer)
           end
 
-          pfMap:UpdateNode(pfMap.mpins[i], node, color, "minimap")
+          pfMap:UpdateNode(pfMap.mpins[i], node, color, "minimap", distance)
 
           pfMap.mpins[i].hl:Hide()
 
@@ -1052,7 +1076,7 @@ pfMap:SetScript("OnUpdate", function()
         transition = frame:Animate((frame.texture and frame.defsize + 4 or frame.defsize), 1, fps) or transition
       elseif not highlight and pfMap.highlight then
         -- fade node
-        transition = frame:Animate(frame.defsize, tonumber(pfQuest_config["nodefade"]), fps) or transition
+        transition = frame:Animate(frame.defsize, tonumber(pfQuest_config["nodefade"]) or 0.3, fps) or transition
       elseif frame.texture or frame.cluster then
         -- defaults for textured nodes
         transition = frame:Animate(frame.defsize, 1, fps) or transition
