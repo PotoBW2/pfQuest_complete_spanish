@@ -1,6 +1,6 @@
 # pfQuest-toolbox
 
-## Setup Dependencies
+## Configurar dependencias
 ### Archlinux
 
     # pacman -S mariadb mariadb-clients luarocks
@@ -8,10 +8,10 @@
     # systemctl start mariadb
     # luarocks install luasql-mysql MYSQL_INCDIR=/usr/include/mysql
 
-## Prepare Databases
-The pfQuest extractor supports VMaNGOS and CMaNGOS databases. By default, VMaNGOS is used vanilla and CMaNGOS is used for TBC. For CMaNGOS translations, the Mangos-Extras project is used.
+## Preparar bases de datos
+El extractor de pfQuest es compatible con las bases de datos VMaNGOS y CMaNGOS. De forma predeterminada, se utiliza VMaNGOS para la versión *vanilla* y CMaNGOS para TBC. Para las traducciones en CMaNGOS, se emplea el proyecto Mangos-Extras.
 
-### Create Users And Permissions
+### Crear usuarios y permisos
 
     mariadb <<< '
         DROP DATABASE IF EXISTS `pfquest`;
@@ -34,19 +34,19 @@ The pfQuest extractor supports VMaNGOS and CMaNGOS databases. By default, VMaNGO
         GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES, EXECUTE, ALTER ROUTINE, CREATE ROUTINE ON `turtle`.* TO 'mangos'@'localhost';
     '
 
-### Import Client Data
+### Importar datos de clientes
 
-Import the game client data SQL files:
+Importa los archivos SQL de los datos del cliente del juego:
 
     mariadb -u mangos -p"mangos" pfquest < ../client-data.sql
 
 ### Vanilla (VMaNGOS)
 
-Manually download the latest [VMaNGOS Database](https://github.com/vmangos/core/releases/tag/db_latest) and unzip it.
+Descarga manualmente la versión más reciente de la [base de datos de VMaNGOS](https://github.com/vmangos/core/releases/tag/db_latest) y descomprímela.
 
     mariadb -u mangos -p"mangos" vmangos < mangos.sql
 
-Clone the VMaNGOS core repository to obtain all SQL updates.
+Clona el repositorio principal de VMaNGOS para obtener todas las actualizaciones SQL.
 
     git clone https://github.com/vmangos/core.git
 
@@ -54,7 +54,7 @@ Clone the VMaNGOS core repository to obtain all SQL updates.
     for file in *_world.sql; do mariadb -u mangos -p"mangos" vmangos < $file; done
     cd -
 
-Create `_loc10` entries to VMaNGOS translation tables for `ptBR`:
+Crea entradas `_loc10` en las tablas de traducción de VMaNGOS para `ptBR`:
 
     mariadb -u mangos -p"mangos" vmangos <<< '
         # select database
@@ -84,7 +84,7 @@ Create `_loc10` entries to VMaNGOS translation tables for `ptBR`:
         ALTER TABLE locales_quest ADD EndText_loc10 TEXT;
     '
 
-Use the current `ptBR` localizations from the vmangos core repo and patch them into `_loc10` entries.
+Utiliza las localizaciones `ptBR` actuales del repositorio principal de vmangos e incorpóralas como entradas `_loc10`.
 
     cd core/sql/translations/ptBR
     git checkout .
@@ -113,15 +113,15 @@ Use the current `ptBR` localizations from the vmangos core repo and patch them i
     mariadb -u mangos -p"mangos" vmangos < quest_template.sql
     cd -
 
-### TurtleWoW (Optional)
+### TurtleWoW (Opcional)
 
-Obtain and download the latest TurtleWoW database and unzip it.
+Obtén y descarga la base de datos más reciente de TurtleWoW y descomprímela.
 
     mariadb -u mangos -p"mangos" turtle < turtle/*.sql
 
-### The Burning Crusade (CMaNGOS)
+### La Cruzada Ardiente (CMaNGOS)
 
-Clone the latest CMaNGOS TBC database and the translations of the Mangos-Extras project:
+Clona la base de datos más reciente de CMaNGOS TBC y las traducciones del proyecto Mangos-Extras:
 
     git clone https://github.com/cmangos/mangos-tbc.git
     git clone https://github.com/cmangos/tbc-db.git
@@ -140,9 +140,9 @@ Clone the latest CMaNGOS TBC database and the translations of the Mangos-Extras 
     for file in database/Translations/1_LocaleTablePrepare.sql database/Translations/Translations/*/*.sql; do echo "$file"; mariadb -u mangos -p"mangos" cmangos-tbc < "$file"; done
 
 
-## Optimize Database Performance
+## Optimizar el rendimiento de la base de datos
 
-Run the following commands to improve extractor performance by indexing the sql entries:
+Ejecuta los siguientes comandos para mejorar el rendimiento del extractor mediante la indexación de las entradas SQL:
 
     mariadb <<< '
         use 'vmangos';
@@ -197,17 +197,17 @@ Run the following commands to improve extractor performance by indexing the sql 
         CREATE INDEX idx_wma_tbc_area ON pfquest.WorldMapArea_tbc(areatableID);
     '
 
-## Run the Extractor
+## Ejecuta el extractor
 
-Start the database extractor
+Inicia el extractor de bases de datos
 
     $ make
 
-## Optional: Build Client-Data
-### Copy CSVs to DBC/
-You additionally need to extract the `dbc` files from your gameclients.
-Those can be obtained via the `ad` tool within the CMaNGOS tools.
-The DBC files then need to be converted into `.csv` and placed as followed:
+## Opcional: Generar datos de cliente
+### Copiar CSV a DBC/
+Además, necesitas extraer los archivos `dbc` de los clientes de tu juego.
+Estos se pueden obtener mediante la herramienta `ad`, incluida en el conjunto de herramientas de CMaNGOS.
+A continuación, los archivos DBC deben convertirse al formato `.csv` y ubicarse de la siguiente manera:
 
     $ ls -1 DBC/
     deDE  enUS  esES  frFR  koKR  ruRU  zhCN
@@ -217,22 +217,17 @@ The DBC files then need to be converted into `.csv` and placed as followed:
     SkillLine.dbc.csv
     WorldMapArea.dbc.csv
 
-### Required DBCs
+### DBC requeridos
 #### WorldMapArea.dbc [enUS]
-Required to obtain the map-sizes which are used for
-  1. calculating the minimap offset
-  2. calculating the objects possible maps during extraction
+Se requiere obtener los tamaños de mapa que se utilizan para
+  1. cálculo del desplazamiento del minimapa
+  2. calcular las posibles asignaciones de los objetos durante la extracción
 
 #### Lock.dbc [enUS]
-Used to get a list of all skill requirements which are used during the
-meta-list extraction
+Se utiliza para obtener una lista de todos los requisitos de habilidades empleados durante la extracción de la meta-lista.
 
-#### AreaTable.dbc [all]
-The `AreaTable.dbc` is used to build the zones table. The zone table is required
-to tell the gameclient which map should be shown when searching for an object.
-It's basically a map-id to mape-name translation table.
+#### AreaTable.dbc [todos]
+El archivo `AreaTable.dbc` se utiliza para construir la tabla de zonas. Esta tabla es necesaria para indicar al cliente del juego qué mapa debe mostrarse al buscar un objeto. En esencia, se trata de una tabla de conversión entre identificadores de mapa y nombres de mapa.
 
-#### SkillLine.dbc [all]
-The `SkillLine.db` is used to build the professions table. The profession table is
-required to check the players professions against quest requirements. It's
-basically a profession-id to profession-name translation table.
+#### SkillLine.dbc [todos]
+El archivo `SkillLine.db` se utiliza para construir la tabla de profesiones. Esta tabla es necesaria para comparar las profesiones de los jugadores con los requisitos de las misiones. En esencia, se trata de una tabla de conversión que relaciona el identificador de una profesión con su nombre.
