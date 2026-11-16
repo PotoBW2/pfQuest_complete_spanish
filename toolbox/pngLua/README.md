@@ -1,4 +1,4 @@
-![pngLua logo](/logo.png?raw=true)
+![pngLua logo](/toolbox/pngLua/logo.png?raw=true)
 
 Una implementación en Lua puro de un decodificador PNG
 
