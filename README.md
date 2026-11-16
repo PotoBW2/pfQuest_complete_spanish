@@ -1,5 +1,5 @@
 # pfQuest
-<img src="https://github.com/PotoBW2/pfQuest_complete_spanish/blob/master/img/readme/mode.png" float="right" align="right" width="25%">
+<img src="https://raw.githubusercontent.com/PotoBW2/pfQuest_complete_spanish/blob/master/img/readme/mode.png" float="right" align="right" width="25%">
 
 Este es un addon para World of Warcraft Vanilla (1.12) y The Burning Crusade (2.4.3). Ayuda a los jugadores a localizar diversos objetos y misiones dentro del juego. El addon lee los objetivos de las misiones, los analiza y utiliza su base de datos interna para marcar las coincidencias encontradas tanto en el mapa del mundo como en el minimapa. Incluye una interfaz gráfica (GUI) para explorar todos los objetos conocidos. Si alguno de los elementos aún no está disponible en tu reino, verás un símbolo [?] junto a su nombre.
 
