@@ -7,6 +7,21 @@ El addon no está diseñado para servir como guía de misiones o de recorrido; s
 
 pfQuest es el sucesor de [ShaguQuest](https://shagu.org/ShaguQuest/) y ha sido escrito completamente desde cero. A diferencia de [ShaguQuest](https://shagu.org/ShaguQuest/), este addon no depende de ningún addon específico de mapas o de registro de misiones. Está diseñado para ser compatible tanto con la interfaz predeterminada como con cualquier otro addon.
 
+# Traducción
+
+Este repositorio contiene una traducción completa al español del addon pfQuest para World of Warcraft Classic, creado originalmente por Shagu. Sin su trabajo, esta traducción no existiría. Todo el crédito por el desarrollo original, la base de datos y la lógica del addon le pertenece.
+
+Esta es una versión traduce únicamente los textos de la interfaz y el contenido mostrado al español. La funcionalidad, la base de datos y el comportamiento del addon permanecen intactos respecto al original.
+
+> [!IMPORTANT]
+>
+> **Esta traducción solo trabaja el idioma español. No incluye otros idiomas.**
+>
+> ⚠️ Notas: Este es un proyecto no oficial y no está afiliado a Shagu.
+>
+>Para reportar errores relacionados con la traducción, abre un issue en este repositorio.
+>Para problemas del addon original (funcionalidad, base de datos, etc.), dirígete al repositorio original de Shagu.
+
 # Descargas
 Puedes consultar la página de [[Últimos cambios]](https://github.com/shagu/pfQuest/commits/master) para ver qué ha cambiado recientemente.
 
