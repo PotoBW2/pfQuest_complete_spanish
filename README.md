@@ -1,6 +1,5 @@
 # pfQuest
-<img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/mode.png" float="right" align="right" width="25%">
-
+<img src="https://raw.githubusercontent.com/PotoBW2/pfQuest_complete_spanish/master/img/readme/mode.png" float="right" align="right" width="25%">
 Este es un addon para World of Warcraft Vanilla (1.12) y The Burning Crusade (2.4.3). Ayuda a los jugadores a localizar diversos objetos y misiones dentro del juego. El addon lee los objetivos de las misiones, los analiza y utiliza su base de datos interna para marcar las coincidencias encontradas tanto en el mapa del mundo como en el minimapa. Incluye una interfaz gráfica (GUI) para explorar todos los objetos conocidos. Si alguno de los elementos aún no está disponible en tu reino, verás un símbolo [?] junto a su nombre.
 
 El addon no está diseñado para servir como guía de misiones o de recorrido; su objetivo es ofrecer una versión precisa, integrada en el juego, de [AoWoW](http://db.vanillagaming.org/) o [Wowhead](http://www.wowhead.com/). La versión para *Vanilla* utiliza la base de datos de [VMaNGOS](https://github.com/vmangos). La versión para *The Burning Crusade* emplea datos del proyecto [CMaNGOS](https://github.com/cmangos), con traducciones provenientes de [MaNGOS Extras](https://github.com/MangosExtras).
@@ -97,7 +96,7 @@ La versión en desarrollo incluye bases de datos de todos los idiomas y expansio
 El addon incluye una base de datos completa con todas las apariciones (spawns), objetos, ítems y misiones; por tanto, contiene una base de datos de gran tamaño (~80 MB, incluyendo todos los idiomas) que se carga en la memoria al iniciar el juego. No obstante, el consumo de memoria de pfQuest es constante y no aumenta con el paso del tiempo, por lo que no afecta negativamente al rendimiento. Dependiendo de la versión que descargues (especialmente en los paquetes completos), es posible que aparezca un aviso indicando que un addon está consumiendo demasiada memoria. Para eliminar este aviso, puedes establecer el límite de memoria para los addons en `0`, lo cual equivale a «sin límite». Esta opción se encuentra en la [pantalla de selección de personaje](https://i.imgur.com/rZXwaK0.jpg).
 
 # Nodos del mapa y del minimapa
-<img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/arrow.jpg" width="35.8%" align="left">
+<img src="img/readme/arrow.jpg" width="35.8%" align="left">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/minimap-nodes.png" width="59.25%">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/map-quests.png" width="55.35%" align="left">
 <img src="https://raw.githubusercontent.com/shagu/ShaguAddons/master/_img/pfQuest/map-spawnpoints.png" width="39.65%">
