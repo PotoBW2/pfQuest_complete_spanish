@@ -1359,7 +1359,7 @@ local locales = {
     ["Vendor"] = "Vendedor",
     ["Welcome Screen"] = "Pantalla de bienvenida",
     ["World Map Node Transparency"] = "Transparencia de los nodos en el mapa del mundo",
-    ["You already did this quest."] = "Ya completas esta misión",
+    ["You already did this quest."] = "Ya completaste esta misión",
     ["You are on this quest."] = "Misión en progresa",
     ["You don't have this quest."] = "No tienes esta misión",
   },

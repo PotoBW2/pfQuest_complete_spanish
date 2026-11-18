@@ -1,3 +1,41 @@
+-- Traduccion mia
+local diasSemana = {
+    ["Sunday"] = "Domingo",
+    ["Monday"] = "Lunes",
+    ["Tuesday"] = "Martes",
+    ["Wednesday"] = "Miércoles",
+    ["Thursday"] = "Jueves",
+    ["Friday"] = "Viernes",
+    ["Saturday"] = "Sábado",
+}
+
+local meses = {
+    ["January"] = "Enero",
+    ["February"] = "Febrero",
+    ["March"] = "Marzo",
+    ["April"] = "Abril",
+    ["May"] = "Mayo",
+    ["June"] = "Junio",
+    ["July"] = "Julio",
+    ["August"] = "Agosto",
+    ["September"] = "Septiembre",
+    ["October"] = "Octubre",
+    ["November"] = "Noviembre",
+    ["December"] = "Diciembre",
+}
+
+local function FechaEspanol(timestamp)
+    local fecha = date("%A, %B %d (%Y)", timestamp)
+    for en, es in pairs(diasSemana) do
+        fecha = string.gsub(fecha, en, es)
+    end
+    for en, es in pairs(meses) do
+        fecha = string.gsub(fecha, en, es)
+    end
+    return fecha
+end
+
+
 -- multi api compat
 local compat = pfQuestCompat
 local collapsed = {}
@@ -123,7 +161,7 @@ local function ReloadJournal(self)
   local lastcolumn, column
 
   for questid, data in pfQuest:SortedPairs(pfQuest_history, 1) do
-    column = data[1] == 0 and UNKNOWN or date("%A, %B %d (%Y)", data[1])
+    column = data[1] == 0 and UNKNOWN or FechaEspanol(data[1])
 
     if column ~= lastcolumn then -- add columns to the view
       lastcolumn = column
