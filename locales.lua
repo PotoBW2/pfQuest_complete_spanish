@@ -1315,6 +1315,7 @@ local locales = {
     ["Show Tooltips"] = "Mostrar información sobre herramientas",
     ["Simple Markers"] = "Marcadores simples",
     ["Sold by"] = "Vendido por",
+    ["Shortcut Menu"] = "Menú de acceso rápido",
     ["Spawn Points"] = "Puntos de aparición",
     ["Speak with |cff33ffcc%s|r to complete |cffffcc00[?]|cff33ffcc %s|r"] = "Hablar con |cff33ffcc%s|r para completar |cffffcc00[?]|cff33ffcc %s|r",
     ["Speak with |cff33ffcc%s|r to obtain |cffffcc00[!]|cff33ffcc %s|r"] = "Hablar con |cff33ffcc%s|r para obtener |cffffcc00[!]|cff33ffcc %s|r",
